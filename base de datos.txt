@@ -1,0 +1,27 @@
+sudo su
+mysql 
+
+DROP DATABASE IF EXISTS carmusic;
+
+CREATE DATABASE IF NOT EXISTS carmusic;
+
+USE carmusic;
+
+CREATE TABLE IF NOT EXISTS canciones (
+        id int PRIMARY KEY AUTO_INCREMENT,
+        nomcancion varchar(100) NOT NULL,
+        nomcd varchar(100) NOT NULL,
+        numcd int NOT NULL
+
+    );
+
+CREATE USER 'musica'@'localhost' IDENTIFIED BY '1234';
+
+GRANT ALL PRIVILEGES ON carmusic.* TO 'musica'@'localhost';
+
+FLUSH PRIVILEGES;
+
+-- Introducir una columna de prueba --
+
+INSERT INTO canciones (nomcancion,nomcd,numcd)
+values ('prueba','prueba','1');

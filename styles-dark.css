@@ -1,0 +1,19 @@
+/* Estilos generales para el tema oscuro */
+body {
+  background-color: #333; /* Fondo negro */
+  color: #f5f5f5; /* Texto blanco */
+}
+a {
+  color: #f5f5f5;
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+th,
+td {
+  border: 1px solid #f5f5f5;
+  padding: 8px;
+  text-align: left;
+}
+/* Agrega estilos adicionales para otros elementos según sea necesario */
