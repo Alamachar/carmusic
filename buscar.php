@@ -29,7 +29,7 @@ if(isset($_GET['search']) && !empty($_GET['search'])){
     // Verificar si hay resultados
     if (mysqli_num_rows($resultado) > 0) {
         // Mostrar los resultados en forma de tabla
-        echo "<a href='index.php'>Volver a la página principal</a>";
+        echo "<a href='lista.php'>Volver a la página principal</a>";
 
         echo "<table>";
         echo "<tr><th>Nombre de la Canción</th><th>Disco</th><th>Número de CD</th></tr>";

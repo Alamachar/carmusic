@@ -1,7 +1,7 @@
 /* Estilos generales para el tema oscuro */
 body {
-  background-color: #333; /* Fondo negro */
-  color: #f5f5f5; /* Texto blanco */
+  background-color: #333;
+  color: #f5f5f5; 
 }
 a {
   color: #f5f5f5;
@@ -16,4 +16,14 @@ td {
   padding: 8px;
   text-align: left;
 }
-/* Agrega estilos adicionales para otros elementos según sea necesario */
+button {
+  padding: 10px 20px;
+  background-color: #9a9b9c;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #3e3e3f;
+}
