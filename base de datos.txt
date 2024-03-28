@@ -23,7 +23,7 @@ CREATE TABLE IF NOT EXISTS cds (
 -- Tabla de Canciones
 CREATE TABLE IF NOT EXISTS canciones (
     id int PRIMARY KEY AUTO_INCREMENT,
-    nomcancion varchar(100) NOT NULL,
+    nomcancion varchar(200) NOT NULL,
     id_cd int,
     id_artista int,
     FOREIGN KEY (id_cd) REFERENCES cds(id),
