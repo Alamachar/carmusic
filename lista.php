@@ -20,19 +20,23 @@
             <th>Nombre de la Canción</th>
             <th>Disco</th>
             <th>Número de CD</th>
+            <th>Artista</th> <!-- Nueva columna para el nombre del artista -->
         </tr>
         <?php
         // Incluir el archivo de conexión a la base de datos
         include 'conexion.php';
 
-        // Consulta SQL para obtener las canciones y sus discos
-        $consulta = "SELECT nomcancion, nomcd, numcd FROM canciones";
+        // Consulta SQL para obtener las canciones, sus discos y el nombre del artista
+        $consulta = "SELECT canciones.nomcancion, cds.nomcd, cds.numcd, artistas.nombre AS nombre_artista 
+                     FROM canciones 
+                     INNER JOIN cds ON canciones.id_cd = cds.id 
+                     INNER JOIN artistas ON canciones.id_artista = artistas.id";
 
         // Verificar si se envió una consulta de búsqueda
         if(isset($_GET['search']) && !empty($_GET['search'])){
             $search = $_GET['search'];
             // Añadir filtro de búsqueda a la consulta SQL
-            $consulta .= " WHERE nomcancion LIKE '%$search%'";
+            $consulta .= " WHERE canciones.nomcancion LIKE '%$search%'";
         }
 
         $resultado = mysqli_query($conexion, $consulta);
@@ -45,10 +49,11 @@
                 echo "<td>{$fila['nomcancion']}</td>";
                 echo "<td>{$fila['nomcd']}</td>";
                 echo "<td>{$fila['numcd']}</td>";
+                echo "<td>{$fila['nombre_artista']}</td>"; // Mostrar el nombre del artista
                 echo "</tr>";
             }
         } else {
-            echo "<tr><td colspan='3'>No hay canciones disponibles.</td></tr>";
+            echo "<tr><td colspan='4'>No hay canciones disponibles.</td></tr>";
         }
 
         // Cerrar la conexión

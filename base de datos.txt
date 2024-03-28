@@ -7,21 +7,31 @@ CREATE DATABASE IF NOT EXISTS carmusic;
 
 USE carmusic;
 
-CREATE TABLE IF NOT EXISTS canciones (
-        id int PRIMARY KEY AUTO_INCREMENT,
-        nomcancion varchar(100) NOT NULL,
-        nomcd varchar(100) NOT NULL,
-        numcd int NOT NULL
+-- Tabla de Artistas
+CREATE TABLE IF NOT EXISTS artistas (
+    id int PRIMARY KEY AUTO_INCREMENT,
+    nombre varchar(100)
+);
 
-    );
+-- Tabla de CDs
+CREATE TABLE IF NOT EXISTS cds (
+    id int PRIMARY KEY AUTO_INCREMENT,
+    nomcd varchar(100),
+    numcd int UNSIGNED NOT NULL
+);
+
+-- Tabla de Canciones
+CREATE TABLE IF NOT EXISTS canciones (
+    id int PRIMARY KEY AUTO_INCREMENT,
+    nomcancion varchar(100) NOT NULL,
+    id_cd int,
+    id_artista int,
+    FOREIGN KEY (id_cd) REFERENCES cds(id),
+    FOREIGN KEY (id_artista) REFERENCES artistas(id)
+);
 
 CREATE USER 'musica'@'localhost' IDENTIFIED BY '1234';
 
 GRANT ALL PRIVILEGES ON carmusic.* TO 'musica'@'localhost';
 
 FLUSH PRIVILEGES;
-
--- Introducir una columna de prueba --
-
-INSERT INTO canciones (nomcancion,nomcd,numcd)
-values ('prueba','prueba','1');

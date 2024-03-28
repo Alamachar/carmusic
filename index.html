@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+<head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Buscador de Canciones</title>
@@ -35,45 +35,44 @@
       }
     </style>
     <link rel="stylesheet" href="styles-light.css" id="theme" />
-  </head>
-  <body>
+</head>
+<body>
     <div class="container">
-      <h1>Buscador de Canciones</h1>
-      <input type="text" id="searchInput" placeholder="Buscar canción..." />
-      <button onclick="search()">Buscar</button>
-      <button onclick="toggleTheme()">Cambiar Tema</button>
+        <h1>Buscador de Canciones</h1>
+        <input type="text" id="searchInput" placeholder="Buscar canción, CD, número de CD o artista..." />
+        <button onclick="search()">Buscar</button>
+        <button onclick="toggleTheme()">Cambiar Tema</button>
 
-      <div id="searchResults"></div>
+        <div id="searchResults"></div>
     </div>
 
     <script>
-      function search() {
-        var input = document.getElementById("searchInput").value;
-        var xhr = new XMLHttpRequest();
-        xhr.onreadystatechange = function () {
-          if (this.readyState == 4 && this.status == 200) {
-            document.getElementById("searchResults").innerHTML =
-              this.responseText;
-          }
-        };
-        xhr.open("GET", "search.php?query=" + input, true);
-        xhr.send();
-      }
-    </script>
-    <script>
-      function toggleTheme() {
-        // Obtiene el elemento link que enlaza al CSS
-        var theme = document.getElementById("theme");
-
-        // Comprueba si el tema actual es claro o no
-        if (theme.getAttribute("href") === "styles-light.css") {
-          // Cambia al tema oscuro
-          theme.setAttribute("href", "styles-dark.css");
-        } else {
-          // Cambia al tema claro
-          theme.setAttribute("href", "styles-light.css");
+        function search() {
+            var input = document.getElementById("searchInput").value;
+            var xhr = new XMLHttpRequest();
+            xhr.onreadystatechange = function () {
+                if (this.readyState == 4 && this.status == 200) {
+                    document.getElementById("searchResults").innerHTML =
+                        this.responseText;
+                }
+            };
+            xhr.open("GET", "search.php?query=" + input, true);
+            xhr.send();
         }
-      }
+
+        function toggleTheme() {
+            // Obtiene el elemento link que enlaza al CSS
+            var theme = document.getElementById("theme");
+
+            // Comprueba si el tema actual es claro o no
+            if (theme.getAttribute("href") === "styles-light.css") {
+                // Cambia al tema oscuro
+                theme.setAttribute("href", "styles-dark.css");
+            } else {
+                // Cambia al tema claro
+                theme.setAttribute("href", "styles-light.css");
+            }
+        }
     </script>
-  </body>
+</body>
 </html>
